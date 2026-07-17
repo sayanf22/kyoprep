@@ -307,7 +307,7 @@ h1, h2, h3, h4 {
     padding-top: 110px;
     padding-bottom: 40px;
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
 }
 
 .hero-glow {
