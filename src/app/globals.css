@@ -1861,13 +1861,13 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .hero-section {
-        padding-top: 82px;
+        padding-top: 108px;
         padding-bottom: 24px;
     }
 
     .nav-pill-container {
         width: 94%;
-        margin: 8px auto 0 auto;
+        margin: 16px auto 0 auto;
         padding: 8px 16px;
     }
 
