@@ -187,6 +187,7 @@ h1, h2, h3, h4 {
     font-weight: 800;
     font-size: 1.4rem;
     color: var(--text-primary);
+    flex-shrink: 0;
 }
 
 .logo-text span {
@@ -256,6 +257,8 @@ h1, h2, h3, h4 {
     text-decoration: none;
     box-shadow: 2px 3px 0px #121c17;
     transition: var(--transition-smooth);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-btn-lavender:hover {
@@ -1858,7 +1861,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .hero-section {
-        padding-top: 85px;
+        padding-top: 82px;
         padding-bottom: 24px;
     }
 
@@ -1899,7 +1902,14 @@ h1, h2, h3, h4 {
     }
 
     .hero-visual {
-        display: none;
+        display: block;
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    .hero-visual img {
+        max-width: 260px !important;
+        margin: 0 auto !important;
     }
 
     .marquee-container-wrapper {
