@@ -47,6 +47,31 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Scrollbar: hidden at rest, visible while scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s;
+}
+
+/* Webkit: custom scrollbar */
+html::-webkit-scrollbar {
+    width: 5px;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.4s ease;
+}
+
+/* Only show scrollbar thumb while actively scrolling */
+html.is-scrolling {
+    scrollbar-color: rgba(18, 28, 23, 0.28) transparent;
+}
+html.is-scrolling::-webkit-scrollbar-thumb {
+    background: rgba(18, 28, 23, 0.28);
 }
 
 body {
