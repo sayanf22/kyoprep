@@ -19,12 +19,14 @@ export default function Home() {
       return;
     }
 
-    // 1. Observer for showcase card
+    // 1. Observer for showcase card (phone mockup)
     const showcaseObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting); // Reversible!
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
     );
 
     if (sectionRef.current) {
@@ -32,6 +34,9 @@ export default function Home() {
     }
 
     // 2. Observer for general scroll entrance animations
+    // - threshold: 0.12 → at least 12% of element must be visible
+    // - rootMargin bottom: -120px → element must be 120px inside viewport before triggering
+    //   This prevents off-screen sections from animating before user scrolls to them
     const animatedElements = document.querySelectorAll(
       ".scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-up"
     );
@@ -40,12 +45,12 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("in-view");
-          } else {
-            entry.target.classList.remove("in-view"); // Reversible scroll animation!
+            // Animate once — stop observing after it fires so it never re-triggers
+            scrollObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -120px 0px" }
     );
 
     animatedElements.forEach((el) => scrollObserver.observe(el));
